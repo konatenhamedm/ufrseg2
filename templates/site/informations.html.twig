@@ -1,0 +1,92 @@
+{% extends 'base-layout.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="card shadow-sm">
+        <div class="card-header card-header-sm">
+            <h3 class="card-title"> Informations etudiant</h3>
+            <div class="card-toolbar">
+               {# <a href="{{ path('app_utilisateur_utilisateur_new') }}" class="btn btn-main btn-sm"
+                   data-bs-toggle="modal" data-bs-target="#exampleModalSizeLg2">
+                    <i class="bi bi-plus-square text-light"></i>
+                    Nouveau
+                </a>#}
+            </div>
+        </div>
+        <div class="card-body">
+            {% form_theme form 'widget/fields-block.html.twig' %}
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+
+                {{ include('_includes/ajax/response.html.twig') }}
+            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#kt_tab_pane_1">ETAT CIVIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_2">VOS CONTACTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_3">INFORMATIONS PERSONNELS</a>
+                </li> <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_4">VOTRES PARCOURS</a>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="kt_tab_pane_1" role="tabpanel">
+                    <div class="row">
+                        <div class="form-group col-md-12 mb-2">{{ form_row(form.nom) }}</div>
+                        <div class="form-group  col-md-12 mb-2">{{ form_row(form.prenom) }}</div>
+                        <div class="form-group  col-md-12 mb-2">{{ form_row(form.dateNaissance) }}</div>
+                        <div class="form-group  col-md-12 mb-2">{{ form_row(form.lieuNaissance) }}</div>
+                        <div class="form-group  col-md-12 mb-2">{{ form_row(form.genre) }}</div>
+                        <div class="form-group  col-md-12 mb-2">{{ form_row(form.civilite) }}</div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="kt_tab_pane_2" role="tabpanel">
+                    <div class="col-md-12">{{ form_row(form.email) }}</div>
+                    <div class="col-md-12">{{ form_row(form.contact) }}</div>
+
+                </div>
+                <div class="tab-pane fade" id="kt_tab_pane_3" role="tabpanel">
+                    ...aa
+                </div> <div class="tab-pane fade" id="kt_tab_pane_4" role="tabpanel">
+                    ...aa
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8"><button type="button" class="btn btn-default btn-sm" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-main  btn-sm  btn-ajax">
+                        <span class="spinner-border d-none  spinner-ajax spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Valider</button></div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block java %}
+
+    <script>
+        $('.no-auto').each(function () {
+            const $this = $(this);
+            const $id = $('#' + $this.attr('id'));
+            init_date_picker($id,  'down', (start, e) => {
+                //$this.val(start.format('DD/MM/YYYY'));
+            }, null, null, false);
+
+            $id.on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY'));
+            });
+        });
+    </script>
+{% endblock %}

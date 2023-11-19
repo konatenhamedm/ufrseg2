@@ -1,0 +1,28 @@
+framework:
+    workflows:
+        preinscription:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'etat'
+            supports:
+                - App\Entity\NiveauEtudiant
+            initial_marking: attente_validation
+            places:
+                - attente_validation
+                - rejete
+                - valide_non_paye
+                - valide_paye
+            transitions:
+                passer:
+                    from: attente_validation
+                    to: valide_non_paye
+                rejeter:
+                    from: attente_validation
+                    to: rejete
+                payer:
+                    from: valide_non_paye
+                    to: valide_paye
+

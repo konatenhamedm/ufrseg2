@@ -1,0 +1,198 @@
+{% block page_content %}
+    {% form_theme form 'widget/fields-block.html.twig' %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modification NiveauEtudiant</h5>
+        <div class="btn btn-icon btn-sm  ms-2" data-bs-dismiss="modal" aria-label="Close">
+            <span class="svg-icon svg-icon-2x text-white">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+					<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+				</svg>
+            </span>
+        </div>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        {{ include('_includes/ajax/response.html.twig') }}
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <div class="text-center border-end">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+                                    <h4 class="text-primary font-size-20 mt-1 mb-2">{{ etudiant.getNomComplet }}</h4>
+                                    <h5 class="text-muted font-size-13 mb-0">{% if etudiant.lieuNaissance %} {{ etudiant.lieuNaissance }} {% else %} Néant {% endif %}</h5>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-9">
+                                <div class="ms-3">
+                                    <div class="row d-flex">
+                                        <div class="col-9 ">
+                                        </div>
+
+                                        <div class="col-3 ">
+
+
+                                            <div class="card-toolbar  ">
+                                                <a href="{{ path('app_comptabilite_niveau_etudiant_new') }}" class="btn btn-main btn-sm"
+                                                   data-bs-toggle="modal" data-bs-target="#modal-lg">
+
+                                                    Voir plus
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-4 align-items-end">
+
+                                        <div class="col-6">
+                                            <div class="py-2">
+
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.nom %} {{ etudiant.nomComplet }}  {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;">  {% if etudiant.contact %} {{ etudiant.contact }} {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.genre.libelle %} {{ etudiant.genre.libelle}}  {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;">  {% if etudiant.contact %} {{ etudiant.contact }} {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="py-2">
+
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.email %}{{ etudiant.email }} {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.dateNaissance %} {{ etudiant.dateNaissance |date("m/d/Y") }} {% else %} Néant {% endif %} </font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.lieuNaissance %} {{ etudiant.lieuNaissance }} {% else %} Néant {% endif %}</font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+                                            <div class="py-2">
+                                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary ">
+                                                    <div class="text-gray-700 fw-bold fs-6">
+                                                        <font style="vertical-align: inherit;"> {% if etudiant.civilite.libelle %}  {{ etudiant.civilite.libelle}} {% else %} Néant {% endif %} </font>
+                                                    </div>    <!--end::Description-->
+                                                </div><!--end::Information-->
+                                            </div>
+
+                                        </div>
+                                        <!-- end col -->
+                                    </div><!-- end row -->
+                                </div>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end card body -->
+                </div><!-- end card -->
+
+
+            </div>
+        </div>
+        {#<div class="row">
+            <div class="col-md-4">
+                <div class="fv-row mb-2">
+                    <!--begin::Label-->
+                    <label class="required fw-semibold fs-6 mb-2">Eudiant</label>
+                    {{ form_widget(form.etudiant) }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="fv-row mb-2 justification">
+                    <label class="required fw-semibold fs-6 mb-2">Niveau </label>
+                    {{ form_widget(form.niveau) }}
+                </div>
+            </div> <div class="col-md-4">
+                <div class="fv-row mb-2 justification">
+                    <label class="required fw-semibold fs-6 mb-2">Filiere </label>
+                    {{ form_widget(form.filiere) }}
+                </div>
+            </div>
+
+        </div>#}
+    </div>
+
+    <div class="modal-footer">
+        {# {{ include('_includes/ajax/loader.html.twig') }} #}
+        {{ form_widget(form.annuler) }}{#
+        {{ form_widget(form.save) }}#}
+        {{ form_widget(form.passer) }}
+   {#     <a href="{{ path('app_comptabilite_niveau_etudiant_rejeter',{'id':niveau_etudiant.id}) }}" class="btn btn-danger btn-sm"
+           data-bs-toggle="modal" data-bs-target="#modal-lg">
+            <i class="bi bi-plus-square text-light"></i>
+
+        </a>
+#}
+        <a title="Rejeter la demande" href="{{ path('app_comptabilite_niveau_etudiant_rejeter',{'id':niveau_etudiant.id }) }}" class="btn btn-danger btn-sm test" data-bs-stacked-toggle="modal" data-bs-stacked-modal="#exampleModalSizeLg2">Rejeter la demande</a>
+
+    </div>
+    {{ form_widget(form._token) }}
+    {{ form_end(form, {render_rest: false}) }}
+
+{% endblock %}
+
+{% block javascripts_inline %}
+    <script>
+        $(function () {
+            var elements = Array.from(document.querySelectorAll("[data-bs-stacked-modal]"));
+
+            if (elements && elements.length > 0) {
+                elements.forEach((element) => {
+                    if (element.getAttribute("data-kt-initialized") === "1" ) {
+                        return;
+                    }
+
+                    const url = element.getAttribute('href');
+                    element.setAttribute("data-kt-initialized", "1");
+
+
+                    element.addEventListener("click", function(e) {
+                        e.preventDefault();
+
+                        const modalEl = document.querySelector(this.getAttribute("data-bs-stacked-modal"));
+
+                        if (modalEl) {
+                            const modal = new bootstrap.Modal(modalEl);
+                            modal.show(element);
+                        }
+                    });
+                });
+            }
+            init_select2('select', null, '#modal-lg');
+        }); 
+        
+    </script>
+{% endblock %}
